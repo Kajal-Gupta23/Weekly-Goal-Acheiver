@@ -16,7 +16,7 @@ import os
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +33,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = False
 
 # ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'weekly-goal-acheiver-backend.onrender.com', 
+    '100.20.92.101',
+    '44.225.181.72',
+    '44.227.217.144'
+]
 
 
 # Application definition
