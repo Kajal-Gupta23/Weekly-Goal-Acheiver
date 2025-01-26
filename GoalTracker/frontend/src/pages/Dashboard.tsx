@@ -33,7 +33,7 @@ const Dashboard: React.FC = () => {
     const fetchRecentGoals = async () => {
       try {
         const response = await axios.get('/goals/', { params: { username: localStorage.getItem('username'), limit: 3 } });
-        const goalsWithIcons = response.data.slice(0, 3).map((goal: any,index:number) => ({
+        const goalsWithIcons = response.data.slice(0, 3).map((goal: any, index: number) => ({
           ...goal,
           icon: icons[Math.floor(Math.random() * icons.length)], // Assign a random icon to each goal
           gradient: gradients[index % gradients.length],
@@ -168,7 +168,7 @@ const Dashboard: React.FC = () => {
 
               <div className="space-y-6">
                 {recentGoals.map((goal, index) => (
-                  
+
                   <div
                     key={index}
                     className="relative flex items-center bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group"
@@ -177,8 +177,8 @@ const Dashboard: React.FC = () => {
                     <div className="flex-1 flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${goal.gradient} text-white`}>
-                        {React.createElement(goal.icon, { className: "w-6 h-6" })}
-                          
+                          {React.createElement(goal.icon, { className: "w-6 h-6" })}
+
                         </div>
                         <div>
                           <h3 className="font-semibold text-primary group-hover:text-accent transition-colors">{goal.title}</h3>
@@ -206,7 +206,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-              {/* <div className="space-y-6">
+            {/* <div className="space-y-6">
                 {[
                   { title: 'Complete React Project', progress: 75, dueDate: '2d left', category: 'Dev', icon: Rocket, color: 'from-blue-500 to-violet-500' },
                   { title: 'Morning Workout', progress: 60, dueDate: '5d left', category: 'Health', icon: Zap, color: 'from-green-500 to-emerald-500' },
@@ -278,8 +278,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div> */}
 
-          {/* Achievement Showcase */}
-          <div className="glass-morphism rounded-3xl p-8 bg-white/80">
+            {/* Achievement Showcase */}
+            <div className="glass-morphism rounded-3xl p-8 bg-white/80">
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-2xl font-bold text-primary mb-1">Achievement Unlocked!</h2>
@@ -339,7 +339,7 @@ const Dashboard: React.FC = () => {
                 ))}
               </div> */}
 
-              {/* {!hasActivity && (
+          {/* {!hasActivity && (
                 <div className="text-center py-8 bg-white rounded-2xl">
                   <Bell className="w-12 h-12 text-tertiary mx-auto mb-3" />
                   <h3 className="text-lg font-semibold text-primary mb-2">All Caught Up!</h3>
@@ -347,7 +347,7 @@ const Dashboard: React.FC = () => {
                 </div>
               )} */}
 
-            <div className="col-span-12 lg:col-span-4">
+          <div className="col-span-12 lg:col-span-4">
             <div className="glass-morphism rounded-3xl p-8 bg-white/80 sticky top-24">
               <div className="flex items-center justify-between mb-6">
                 <div>
