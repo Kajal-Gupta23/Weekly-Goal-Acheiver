@@ -23,7 +23,7 @@ const GroupGoals: React.FC = () => {
   const [selectedMembers, setSelectedMembers] = useState<number[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const username = localStorage.getItem('username'); // Get the logged-in user's username
+  const username = localStorage.getItem('username')?.replace(/^"|"$/g, '');; // Get the logged-in user's username
 
   // Fetch groups and users
   useEffect(() => {
