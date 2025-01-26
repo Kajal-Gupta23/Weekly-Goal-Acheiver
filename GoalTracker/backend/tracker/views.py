@@ -114,7 +114,7 @@ class GoalViewSet(viewsets.ModelViewSet):
         """
         Override create to set the logged-in user as the creator.
         """
-        username = request.data.get("username")
+        username = self.request.query_params.get("username")
         if not username or username not in LOGGED_IN_USERS:
             return Response({"error": "User is not logged in."}, status=status.HTTP_401_UNAUTHORIZED)
 
