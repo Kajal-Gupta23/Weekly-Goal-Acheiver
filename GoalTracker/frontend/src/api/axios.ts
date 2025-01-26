@@ -4,7 +4,7 @@ import axios from 'axios';
 import { getAccessToken, getRefreshToken, setTokens, clearTokens } from '../utils/auth';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1:8000/', // Replace with your backend's base URL
+  baseURL: import.meta.env.VITE_BACKEND_URL, // Replace with your backend's base URL
   headers: {
     'Content-Type': 'application/json',
   },

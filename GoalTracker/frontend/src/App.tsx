@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import GroupGoals from './pages/Groups';
 
+
 function App() {
   return (
     <Router>
