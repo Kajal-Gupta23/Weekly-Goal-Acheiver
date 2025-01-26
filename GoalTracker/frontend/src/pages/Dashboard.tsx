@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const username = localStorage.getItem('username')?.replace(/^"|"$/g, '');;
+        const username = localStorage.getItem('username');
         setUsername(username || 'User');
       } catch (error) {
         console.error('Error fetching username:', error);
@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
 
     const fetchRecentGoals = async () => {
       try {
-        const response = await axios.get('/goals/', { params: { username: localStorage.getItem('username')?.replace(/^"|"$/g, ''), limit: 3 } });
+        const response = await axios.get('/goals/', { params: { username: localStorage.getItem('username'), limit: 3 } });
         const goalsWithIcons = response.data.slice(0, 3).map((goal: any, index: number) => ({
           ...goal,
           icon: icons[Math.floor(Math.random() * icons.length)], // Assign a random icon to each goal
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
     const fetchActivities = async () => {
       try {
         const response = await axios.get('/notifications/', {
-          params: { username: localStorage.getItem('username')?.replace(/^"|"$/g, ''); },
+          params: { username: localStorage.getItem('username') },
         });
         const activitiesWithIcons = response.data.map((activity: any, index: number) => ({
           ...activity,
