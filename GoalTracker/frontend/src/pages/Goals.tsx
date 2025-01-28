@@ -37,7 +37,7 @@ const Goals: React.FC = () => {
     start_date: '',
     end_date: '',
   });
-  const username = localStorage.getItem('username')?.replace(/^"|"$/g, '');
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     const fetchGoals = async () => {
