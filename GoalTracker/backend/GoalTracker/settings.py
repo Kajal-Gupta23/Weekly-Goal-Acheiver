@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 import os
 
 SECRET_KEY = config('SECRET_KEY')
@@ -84,6 +85,13 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),  # Adjust token expiry as needed
+#     "AUTH_HEADER_TYPES": ("Bearer",),
+# }
+
+
 AUTH_USER_MODEL = 'tracker.User'
 
 

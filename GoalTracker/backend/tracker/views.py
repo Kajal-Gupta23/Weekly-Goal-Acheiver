@@ -82,9 +82,19 @@ class GoalViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         """
-        Override create to set the logged-in user as the creator.
-        """
-        serializer.save(created_by=self.request.user)
+        # Override create to set the logged-in user as the creator.
+        # """
+        if not request.user.is_authenticated:
+            return Response({"error": "User must be authenticated"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        user = User.objects.get(username=request.user)
+        request.data['created_by']=user.pk
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
 
 
     def partial_update(self, request, *args, **kwargs):
@@ -150,7 +160,6 @@ class LoginView(APIView):
 
         user = authenticate(username=username, password=password)
         if user:
-            LOGGED_IN_USERS[username] = True
             token = get_access_token_for_user(user)
             return Response({"message": "Login successful", "access_token": token}, status=status.HTTP_200_OK)
         return Response({"error": "Invalid username or password"}, status=status.HTTP_401_UNAUTHORIZED)

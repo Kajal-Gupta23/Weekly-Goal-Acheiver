@@ -4,6 +4,7 @@ import axios from '../api/axios';
 import { Trophy, Mail, Lock, ArrowLeft } from 'lucide-react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import { formToJSON } from 'axios';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -14,22 +15,12 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/login/', formData);
-      localStorage.setItem('username', response.data.username); // Save username to localStorage
+      localStorage.setItem('accessToken', response.data.access_token);
+      localStorage.setItem('username', formData.username); // Ensure username is stored
+      // console.log("Token & username stored:", response.data.access_token, formData.username);
       navigate('/dashboard');
     } catch (error) {
       console.error('Login failed:', error);
-    }
-
-    try {
-      // Send login data to backend
-      const response = await axios.post('/login/', formData);
-
-      // Save user data or tokens in localStorage
-      localStorage.setItem('accessToken', response.data.access_token);
-      alert('Login successful!');
-      navigate('/dashboard'); // Redirect after successful login
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Invalid username or password.');
     }
   };
 

@@ -11,7 +11,6 @@ const Header: React.FC = () => {
                          location.pathname !== '/signup';
 
   const handleLogout = () => {
-    clearTokens();
     localStorage.removeItem('accessToken');
     alert('Logged out successfully!');
     navigate('/login');
