@@ -25,7 +25,7 @@ const Login: React.FC = () => {
       const response = await axios.post('/login/', formData);
 
       // Save user data or tokens in localStorage
-      localStorage.setItem('user', JSON.stringify(response.data.username));
+      localStorage.setItem('accessToken', response.data.access_token);
       alert('Login successful!');
       navigate('/dashboard'); // Redirect after successful login
     } catch (err: any) {
